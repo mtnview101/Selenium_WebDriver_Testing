@@ -126,7 +126,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 	
 	public static void main(String[] args) throws IOException {
 		
-	   	 String in_browser = "IE"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
+	   	 String in_browser = "Edge"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
          setWebDriver(in_browser);
 
 
@@ -213,7 +213,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		driver.findElement(By.id("id_lname")).sendKeys(lname);
 		driver.findElement(By.id("id_email")).sendKeys(email);
 		driver.findElement(By.id("id_phone")).sendKeys(phone);
-		driver.findElement(By.id("id_submit_button")).click();
+		driver.findElement(By.id("id_submit_button")).submit();
 
 		String fname_conf_actual = driver.findElement(By.id("id_fname_conf")).getText();
 		String lname_conf_actual = driver.findElement(By.id("id_lname_conf")).getText();
