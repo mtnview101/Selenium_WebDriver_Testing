@@ -126,12 +126,9 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 	
 	public static void main(String[] args) throws IOException {
 		
-	   	 String in_browser = "Edge"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
+	   	 String in_browser = "Firefox"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
          setWebDriver(in_browser);
 
-
-		//WebDriver driver = new HtmlUnitDriver();
-		//WebDriver driver = new FirefoxDriver();
 		String text_case_id_01 = "TC-001.01";
 		String text_case_id_02 = "TC-001.02";
 		String text_case_id_03 = "TC-001.03";
@@ -167,6 +164,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		ArrayList<String> allTabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(allTabs.get(1));
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		String title_facebook_actual = driver.getTitle();
 		driver.close();
 		driver.switchTo().window(allTabs.get(0));
@@ -195,7 +193,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 
 		// TC-001.04
 
-		driver.findElement(By.id("id_submit_button")).click();
+		driver.findElement(By.id("id_submit_button")).submit();
 		String error_fname_empty_actual = driver.findElement(By.id("ErrorLine")).getText();
 
 		if (error_fname_empty_expected.equals(error_fname_empty_actual)) 
@@ -234,6 +232,14 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 			System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);
 			System.out.println("=======================================");}
 
-		driver.quit();
+		System.out.println();
+		url = "http://alex.academy/ua";
+
+        driver.get(url);
+        String ua = driver.findElement(By.id("id_ua")).getText();
+        System.out.println("User Agent: " + ua);
+        if (driver != null)
+        {driver.quit();}
+        
 	}
 }
