@@ -126,20 +126,20 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 	
 	public static void main(String[] args) throws IOException {
 		
-	   	 String in_browser = "Firefox"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or Edge
+	   	 String in_browser = "IE"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
          setWebDriver(in_browser);
 
 
 		//WebDriver driver = new HtmlUnitDriver();
-		WebDriver driver = new FirefoxDriver();
+		//WebDriver driver = new FirefoxDriver();
 		String text_case_id_01 = "TC-001.01";
 		String text_case_id_02 = "TC-001.02";
 		String text_case_id_03 = "TC-001.03";
 		String text_case_id_04 = "TC-001.04";
 		String text_case_id_05 = "TC-001.05";
 		String url = "http://alex.academy/exercises/signup/v1/";
-		String title_sign_up_expected = "Welcome to Sign Up";
-		String title_facebook_expected = "Welcome to Facebook - Log In, Sign Up or Learn More";
+		String title_sign_up_expected = "Welcome to Sign Up v1";
+		String title_facebook_expected = "Facebook - Log In or Sign Up";
 		String error_fname_empty_expected = "Please enter First Name";
 		String fname = "Alex";
 		String lname = "Moore";
@@ -165,8 +165,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 
 		driver.findElement(By.id("id_img_facebook")).click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		ArrayList<String> allTabs = new ArrayList<String>(
-		driver.getWindowHandles());
+		ArrayList<String> allTabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(allTabs.get(1));
 		String title_facebook_actual = driver.getTitle();
 		driver.close();
@@ -196,7 +195,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 
 		// TC-001.04
 
-/*		driver.findElement(By.id("id_submit_button")).click();
+		driver.findElement(By.id("id_submit_button")).click();
 		String error_fname_empty_actual = driver.findElement(By.id("ErrorLine")).getText();
 
 		if (error_fname_empty_expected.equals(error_fname_empty_actual)) 
@@ -206,7 +205,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		
 	  else {System.out.println("Test Case ID: \t\t" + text_case_id_04 + " - FAILED");
 			System.out.println("Error Expected/Actual: \t" + error_fname_empty_expected + "/" + error_fname_empty_actual);
-			System.out.println("=======================================");}*/
+			System.out.println("=======================================");}
 
 		// TC-001.05
 
