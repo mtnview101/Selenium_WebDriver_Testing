@@ -120,13 +120,13 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
                   break;
 
            default:
-                  throw new IllegalArgumentException("Unknown Broweser");
+                  throw new IllegalArgumentException("Unknown Browser");
            }
     }
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
-	   	 String in_browser = "Firefox"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
+	   	 String in_browser = "Edge"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
          setWebDriver(in_browser);
 
 		String text_case_id_01 = "TC-001.01";
@@ -142,6 +142,8 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		String lname = "Moore";
 		String email = "alexmoore@gmail.com";
 		String phone = "415 555-1212";
+		
+		final long start = System.currentTimeMillis();       
 
 		// TC-001.01
 
@@ -162,10 +164,10 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 
 		driver.findElement(By.id("id_img_facebook")).click();
 		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		ArrayList<String> allTabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(allTabs.get(1));
-		Thread.sleep(3000);
+		Thread.sleep(1000);
 		String title_facebook_actual = driver.getTitle();
 		driver.close();
 		driver.switchTo().window(allTabs.get(0));
@@ -234,11 +236,15 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 			System.out.println("=======================================");}
 
 		System.out.println();
+		
+		final long finish = System.currentTimeMillis();
+		long delayEd=2000;
 		url = "http://alex.academy/ua";
 
         driver.get(url);
         String ua = driver.findElement(By.id("id_ua")).getText();
-        System.out.println("User Agent: " + ua);
+        System.out.println("User Agent: \t " + ua);
+        System.out.println("Resonse time: \t " + (finish - start - delayEd) + " milliseconds:");
         if (driver != null)
         {driver.quit();}
         
