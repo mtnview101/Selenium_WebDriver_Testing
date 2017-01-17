@@ -124,7 +124,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
            }
     }
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InterruptedException {
 		
 	   	 String in_browser = "Firefox"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
          setWebDriver(in_browser);
@@ -161,10 +161,11 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		// TC-001.02
 
 		driver.findElement(By.id("id_img_facebook")).click();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		ArrayList<String> allTabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(allTabs.get(1));
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		Thread.sleep(3000);
 		String title_facebook_actual = driver.getTitle();
 		driver.close();
 		driver.switchTo().window(allTabs.get(0));
