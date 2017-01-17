@@ -126,7 +126,7 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
 		
-	   	 String in_browser = "Edge"; // "HtmlUnit" "Firefox" or "Chrome" or Safari or IE or "Edge"
+	   	 String in_browser = "Edge"; // "HtmlUnit" "Firefox" "Chrome"  "Safari"  "IE"  "Edge"
          setWebDriver(in_browser);
 
 		String text_case_id_01 = "TC-001.01";
@@ -238,13 +238,13 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		System.out.println();
 		
 		final long finish = System.currentTimeMillis();
-		long delayEd=2000;
+		long delayDN=2000;
 		url = "http://alex.academy/ua";
 
         driver.get(url);
         String ua = driver.findElement(By.id("id_ua")).getText();
         System.out.println("User Agent: \t " + ua);
-        System.out.println("Resonse time: \t " + (finish - start - delayEd) + " milliseconds:");
+        System.out.println("Resonse time: \t " + (finish - start - delayDN) + " milliseconds:");
         if (driver != null)
         {driver.quit();}
         
