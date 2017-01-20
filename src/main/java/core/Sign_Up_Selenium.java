@@ -134,6 +134,16 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		String text_case_id_03 = "TC-001.03";
 		String text_case_id_04 = "TC-001.04";
 		String text_case_id_05 = "TC-001.05";
+		String text_case_id_06 = "TC-001.06";
+		
+		String text_case_id_06_01 = "TC-001.06.07";
+		String text_case_id_06_02 = "TC-001.06.08";
+		String text_case_id_06_03 = "TC-001.06.09";
+		String text_case_id_06_04 = "TC-001.06.10";
+		String text_case_id_06_05 = "TC-001.06.11";
+		String text_case_id_06_06 = "TC-001.06.12";
+		String text_case_id_06_07 = "TC-001.06.13";
+		
 		String url = "http://alex.academy/exercises/signup/v1/";
 		String title_sign_up_expected = "Welcome to Sign Up v1";
 		String title_facebook_expected = "Facebook - Log In or Sign Up";
@@ -142,6 +152,14 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		String lname = "Moore";
 		String email = "alexmoore@gmail.com";
 		String phone = "415 555-1212";
+		
+		String fname_label_expected = "First Name";
+		String lname_label_expected = "Last Name";
+		String email_label_expected = "Email Address";
+		String phone_label_expected = "Phone Number";
+		String gender_label_expected = "Gender";
+		String state_label_expected = "State";
+		String terms_label_expected = "I agree to the Terms";
 		
 		final long start = System.currentTimeMillis();       
 
@@ -226,7 +244,8 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 			System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
 			System.out.println("Last Expected/Actual: \t"  + lname + "/" + lname_conf_actual);
 			System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
-			System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);} 
+			System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);
+			System.out.println("=======================================");}
 		
 	  else {System.out.println("Test Case ID: \t\t" + text_case_id_05 + " - FAILED");
 			System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
@@ -234,6 +253,89 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 			System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
 			System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);
 			System.out.println("=======================================");}
+		
+		// TC-001.06
+		
+		driver.findElement(By.id("id_back_button")).click();
+
+		String fname_label_actual = driver.findElement(By.id("id_f_label_fn")).getText();
+		String lname_label_actual = driver.findElement(By.id("id_f_label_ln")).getText();
+		String email_label_actual = driver.findElement(By.id("id_f_label_ea")).getText();
+		String phone_label_actual = driver.findElement(By.id("id_f_label_pn")).getText();
+		String gender_label_actual = driver.findElement(By.id("id_f_label_g")).getText();
+		String state_label_actual = driver.findElement(By.id("id_f_label_s")).getText();
+		String terms_label_actual = driver.findElement(By.id("id_cb_label")).getText();
+
+		if (fname_label_expected.equals(fname_label_actual) && lname_label_expected.equals(lname_label_actual) 
+				&& email_label_expected.equals(email_label_actual) && phone_label_expected.equals(phone_label_actual)
+				&& gender_label_expected.equals(gender_label_actual) && state_label_expected.equals(state_label_actual)
+				&& terms_label_expected.equals(terms_label_actual)) 
+		   {System.out.println("Test Case ID: \t\t" + text_case_id_06 + " - PASSED");
+			System.out.println("First label \t Expected/Actual: \t" + fname_label_expected + "/" + fname_label_actual);
+			System.out.println("Last label \t Expected/Actual: \t"  + lname_label_expected + "/" + lname_label_actual);
+			System.out.println("Email label \t Expected/Actual: \t" + email_label_expected + "/" + email_label_actual);
+			System.out.println("Phone label \t Expected/Actual: \t" + phone_label_expected + "/" + phone_label_actual);
+			System.out.println("gender label \t Expected/Actual: \t"  + gender_label_expected + "/" + gender_label_actual);
+			System.out.println("state label \t Expected/Actual: \t" + state_label_expected + "/" + state_label_actual);
+			System.out.println("terms label \t Expected/Actual: \t" + terms_label_expected + "/" + terms_label_actual);
+			System.out.println("=======================================");}
+		
+	  else {System.out.println("Test Case ID: \t\t" + text_case_id_06 + " - FAILED");
+		System.out.println("First label Expected/Actual: \t" + fname_label_expected + "/" + fname_label_actual);
+		System.out.println("Last label Expected/Actual: \t"  + lname_label_expected + "/" + lname_label_actual);
+		System.out.println("Email label Expected/Actual: \t" + email_label_expected + "/" + email_label_actual);
+		System.out.println("Phone label Expected/Actual: \t" + phone_label_expected + "/" + phone_label_actual);
+		System.out.println("gender label Expected/Actual: \t"  + gender_label_expected + "/" + gender_label_actual);
+		System.out.println("state label Expected/Actual: \t" + state_label_expected + "/" + state_label_actual);
+		System.out.println("terms label Expected/Actual: \t" + terms_label_expected + "/" + terms_label_actual);
+			System.out.println("=======================================");}
+		
+		
+		if (fname_label_expected.equals(fname_label_actual)) 
+		   {System.out.println("Test Case ID: \t\t" + text_case_id_06_01 + " - PASSED");
+			System.out.println("First label Expected/Actual: \t" + fname_label_expected + "/" + fname_label_actual);}				
+	  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_01 + " - FAILED");
+			System.out.println("First label Expected/Actual: \t" + fname_label_expected + "/" + fname_label_actual);}				
+			System.out.println("=======================================");				
+		if (lname_label_expected.equals(lname_label_actual))
+		   {System.out.println("Test Case ID: \t\t" + text_case_id_06_02 + " - PASSED");
+			System.out.println("Last label Expected/Actual: \t" + lname_label_expected + "/" + lname_label_actual);}				
+	  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_02 + " - FAILED");
+			System.out.println("Last label Expected/Actual: \t" + lname_label_expected + "/" + lname_label_actual);}			
+			System.out.println("=======================================");
+
+			if (email_label_expected.equals(email_label_actual)) 
+			   {System.out.println("Test Case ID: \t\t" + text_case_id_06_03 + " - PASSED");
+				System.out.println("email label Expected/Actual: \t" + email_label_expected + "/" + email_label_actual);}				
+		  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_03 + " - FAILED");
+				System.out.println("email label Expected/Actual: \t" + email_label_expected + "/" + email_label_actual);}				
+				System.out.println("=======================================");				
+			if (phone_label_expected.equals(phone_label_actual))
+			   {System.out.println("Test Case ID: \t\t" + text_case_id_06_04 + " - PASSED");
+				System.out.println("phone label Expected/Actual: \t" + phone_label_expected + "/" + phone_label_actual);}				
+		  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_04 + " - FAILED");
+				System.out.println("phone label Expected/Actual: \t" + phone_label_expected + "/" + phone_label_actual);}			
+				System.out.println("=======================================");			
+
+				if (gender_label_expected.equals(gender_label_actual)) 
+				   {System.out.println("Test Case ID: \t\t" + text_case_id_06_05 + " - PASSED");
+					System.out.println("gender label Expected/Actual: \t" + gender_label_expected + "/" + gender_label_actual);}				
+			  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_05 + " - FAILED");
+					System.out.println("gender label Expected/Actual: \t" + gender_label_expected + "/" + gender_label_actual);}				
+					System.out.println("=======================================");				
+				if (state_label_expected.equals(state_label_actual))
+				   {System.out.println("Test Case ID: \t\t" + text_case_id_06_06 + " - PASSED");
+					System.out.println("state label Expected/Actual: \t" + state_label_expected + "/" + state_label_actual);}				
+			  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_06 + " - FAILED");
+					System.out.println("state label Expected/Actual: \t" + state_label_expected + "/" + state_label_actual);}			
+					System.out.println("=======================================");	
+					
+					if (terms_label_expected.equals(terms_label_actual))
+					   {System.out.println("Test Case ID: \t\t" + text_case_id_06_07 + " - PASSED");
+						System.out.println("terms label Expected/Actual: \t" + terms_label_expected + "/" + terms_label_actual);}				
+				  else {System.out.println("Test Case ID: \t\t" + text_case_id_06_07 + " - FAILED");
+						System.out.println("terms label Expected/Actual: \t" + terms_label_expected + "/" + terms_label_actual);}			
+						System.out.println("=======================================");					
 
 		System.out.println();
 		
