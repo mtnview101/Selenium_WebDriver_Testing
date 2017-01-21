@@ -143,6 +143,12 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		String text_case_id_06_05 = "TC-001.06.11";
 		String text_case_id_06_06 = "TC-001.06.12";
 		String text_case_id_06_07 = "TC-001.06.13";
+
+		String text_case_id_14 = "TC-002.14";
+		String text_case_id_15 = "TC-002.15";
+		String text_case_id_16 = "TC-002.16";
+		String text_case_id_17 = "TC-002.17";
+		
 		
 		String url = "http://alex.academy/exercises/signup/v1/";
 		String title_sign_up_expected = "Welcome to Sign Up v1";
@@ -160,6 +166,11 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 		String gender_label_expected = "Gender";
 		String state_label_expected = "State";
 		String terms_label_expected = "I agree to the Terms";
+		
+		String fname_error_expected = "Please enter First Name";
+		String lname_error_expected = "Please enter Last Name";
+		String email_error_expected = "Please enter Email Address";
+		String phone_error_expected = "Please enter Phone Number";
 		
 		final long start = System.currentTimeMillis();       
 
@@ -338,6 +349,77 @@ else if ((browser == "Edge") && (System.getProperty("os.name").toUpperCase().con
 						System.out.println("=======================================");					
 
 		System.out.println();
+		
+/*		String text_case_id_14 = "TC-002.14";
+		String text_case_id_15 = "TC-002.15";
+		String text_case_id_16 = "TC-002.16";
+		String text_case_id_17 = "TC-002.17";
+		
+		driver.findElement(By.id("id_fname")).sendKeys(fname);
+		driver.findElement(By.id("id_lname")).sendKeys(lname);
+		driver.findElement(By.id("id_email")).sendKeys(email);
+		driver.findElement(By.id("id_phone")).sendKeys(phone);
+		
+		String fname_error_expected = "Please enter First Name";
+		String lname_error_expected = "Please enter Last Name";
+		String email_error_expected = "Please enter Email Address";
+		String phone_error_expected = "Please enter Phone Number";*/
+		
+		// TC-002.14
+		Thread.sleep(1000);
+		driver.findElement(By.id("id_submit_button")).submit();
+		Thread.sleep(1000);
+		String fname_error_actual = driver.findElement(By.id("ErrorLine")).getText();
+	if (fname_error_expected.equals(fname_error_actual))
+	   {System.out.println("Test Case ID: \t\t" + text_case_id_14 + " - PASSED");
+		System.out.println("terms label Expected/Actual: \t" + fname_error_expected + "/" + fname_error_actual);}				
+  else {System.out.println("Test Case ID: \t\t" + text_case_id_14 + " - FAILED");
+		System.out.println("terms label Expected/Actual: \t" + fname_error_expected + "/" + fname_error_actual);}			
+		System.out.println("=======================================");		
+		
+		// TC-002.15
+		Thread.sleep(1000);
+		driver.findElement(By.id("id_fname")).sendKeys(fname);
+		driver.findElement(By.id("id_submit_button")).submit();
+		Thread.sleep(1000);
+		String lname_error_actual = driver.findElement(By.id("ErrorLine")).getText();
+	if (lname_error_expected.equals(lname_error_actual))
+	   {System.out.println("Test Case ID: \t\t" + text_case_id_15 + " - PASSED");
+		System.out.println("terms label Expected/Actual: \t" + lname_error_expected + "/" + lname_error_actual);}				
+  else {System.out.println("Test Case ID: \t\t" + text_case_id_15 + " - FAILED");
+		System.out.println("terms label Expected/Actual: \t" + lname_error_expected + "/" + lname_error_actual);}			
+		System.out.println("=======================================");	
+		
+		// TC-002.16
+		Thread.sleep(1000);
+		driver.findElement(By.id("id_lname")).sendKeys(lname);
+		driver.findElement(By.id("id_submit_button")).submit();
+		Thread.sleep(1000);
+		String email_error_actual = driver.findElement(By.id("ErrorLine")).getText();
+	if (email_error_expected.equals(email_error_actual))
+	   {System.out.println("Test Case ID: \t\t" + text_case_id_16 + " - PASSED");
+		System.out.println("terms label Expected/Actual: \t" + email_error_expected + "/" + email_error_actual);}				
+  else {System.out.println("Test Case ID: \t\t" + text_case_id_16 + " - FAILED");
+		System.out.println("terms label Expected/Actual: \t" + email_error_expected + "/" + email_error_actual);}			
+		System.out.println("=======================================");			
+		
+		// TC-002.17
+		Thread.sleep(1000);
+		driver.findElement(By.id("id_email")).sendKeys(email);
+		driver.findElement(By.id("id_submit_button")).submit();
+		Thread.sleep(1000);
+		String phone_error_actual = driver.findElement(By.id("ErrorLine")).getText();
+	if (phone_error_expected.equals(phone_error_actual))
+	   {System.out.println("Test Case ID: \t\t" + text_case_id_17 + " - PASSED");
+		System.out.println("terms label Expected/Actual: \t" + phone_error_expected + "/" + phone_error_actual);}				
+  else {System.out.println("Test Case ID: \t\t" + text_case_id_17 + " - FAILED");
+		System.out.println("terms label Expected/Actual: \t" + phone_error_expected + "/" + phone_error_actual);}			
+		System.out.println("=======================================");		
+		
+		
+		
+		
+		
 		
 		final long finish = System.currentTimeMillis();
 		long delayDN=2000;
