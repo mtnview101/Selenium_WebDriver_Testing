@@ -138,9 +138,12 @@ String text_case_id_15 = "TC-002.15";
 String text_case_id_16 = "TC-002.16";
 String text_case_id_17 = "TC-002.17";
 
-String text_case_id_19 = "TC-001.19";
+String text_case_id_13_01 = "TC-001.13.18";
 
-String text_case_id_13_13 = "TC-001.13.13";
+String text_case_id_19 = "TC-001.19";
+String text_case_id_20 = "TC-001.20, Conformation page State field";
+
+
 
 String text_case_id_46 = "TC-001.46 facebook page";
 
@@ -161,6 +164,7 @@ String gender_label_expected = "Gender";
 String state_label_expected = "State";
 String terms_label_expected = "I agree to the Terms";
 String state_select_expected = "California";
+String state_select_actual = "";
 
 String fname_error_expected = "Please enter First Name";
 String lname_error_expected = "Please enter Last Name";
@@ -169,7 +173,7 @@ String phone_error_expected = "Please enter Phone Number";
 		
 final long start = System.currentTimeMillis(); 
 
-String compilation_type="debug";
+String compilation_type="run"; // values for switch: run debug
 switch (compilation_type) {
 
 case "debug":
@@ -177,7 +181,7 @@ case "debug":
 
 	driver.get(url);
 	driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	String state_select_actual = driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).getText(); //id('id_state')/x:option[6]
+	state_select_actual = driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).getText(); //id('id_state')/x:option[6]
 
 	if (state_select_expected.equals(state_select_actual)) 
 	{System.out.println("Test Case ID: \t\t" + text_case_id_19 + " - PASSED");
@@ -185,7 +189,26 @@ case "debug":
 	else {System.out.println("Test Case ID: \t\t" + text_case_id_01 + " - FAILED");
 	System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
 	System.out.println("=======================================");
-       break;
+	
+	// TC-001.20 Confirmation page, State field validation.
+
+	driver.findElement(By.id("id_fname")).sendKeys(fname);
+	driver.findElement(By.id("id_lname")).sendKeys(lname);
+	driver.findElement(By.id("id_email")).sendKeys(email);
+	driver.findElement(By.id("id_phone")).sendKeys(phone);
+	driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).click();
+	driver.findElement(By.id("id_submit_button")).click();
+	//Thread.sleep(5000);
+	state_select_actual = driver.findElement(By.xpath("//*[@id='id_state_conf']")).getText();
+	
+	if (state_select_expected.equals(state_select_actual)) 
+	{System.out.println("Test Case ID: \t\t" + text_case_id_20 + " - PASSED");
+	System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+	else {System.out.println("Test Case ID: \t\t" + text_case_id_20 + " - FAILED");
+	System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+	System.out.println("=======================================");
+
+break;
 
 case "run":
 
@@ -201,8 +224,6 @@ System.out.println("Title Expected/Actual: \t" + title_sign_up_expected + "/" + 
 else {System.out.println("Test Case ID: \t\t" + text_case_id_01 + " - FAILED");
 System.out.println("Title Expected/Actual: \t" + title_sign_up_expected + "/" + title_sign_up_actual);}
 System.out.println("=======================================");
-
-
 
 // TC-001.03 quote validation
 
@@ -228,35 +249,13 @@ else {System.out.println("Test Case ID: \t\t" + text_case_id_04 + " - FAILED");
 System.out.println("Error Expected/Actual: \t" + error_fname_empty_expected + "/" + error_fname_empty_actual);}
 System.out.println("=======================================");
 
-// TC-001.13.13 validation main values in one TC
+// TC-001.06 label validation for all Main Page fields 
 
 driver.findElement(By.id("id_fname")).sendKeys(fname);
 driver.findElement(By.id("id_lname")).sendKeys(lname);
 driver.findElement(By.id("id_email")).sendKeys(email);
 driver.findElement(By.id("id_phone")).sendKeys(phone);
 driver.findElement(By.id("id_submit_button")).click();
-
-String fname_conf_actual = driver.findElement(By.id("id_fname_conf")).getText();
-String lname_conf_actual = driver.findElement(By.id("id_lname_conf")).getText();
-String email_conf_actual = driver.findElement(By.id("id_email_conf")).getText();
-String phone_conf_actual = driver.findElement(By.id("id_phone_conf")).getText();
-
-if (fname.equals(fname_conf_actual) && lname.equals(lname_conf_actual) && email.equals(email_conf_actual) && phone.equals(phone_conf_actual)) 
-{System.out.println("Test Case ID: \t\t" + text_case_id_13_13 + " - PASSED");
-System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
-System.out.println("Last Expected/Actual: \t"  + lname + "/" + lname_conf_actual);
-System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
-System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);}
-else {System.out.println("Test Case ID: \t\t" + text_case_id_13_13 + " - FAILED");
-System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
-System.out.println("Last Expected/Actual: \t"  + lname + "/" + lname_conf_actual);
-System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
-System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);}
-System.out.println("=======================================");
-		
-// TC-001.06 label validation for all Main Page fields 
-
-driver.findElement(By.id("id_back_button")).click();
 
 String fname_label_actual 	= driver.findElement(By.id("id_f_label_fn")).getText();
 String lname_label_actual 	= driver.findElement(By.id("id_f_label_ln")).getText();
@@ -336,8 +335,34 @@ System.out.println("terms label Expected/Actual: \t" + terms_label_expected + "/
 System.out.println("terms label Expected/Actual: \t" + terms_label_expected + "/" + terms_label_actual);}			
 System.out.println("=======================================");					
 
-System.out.println();
-		
+//TC-001.13.18 validation main values in one TC
+
+driver.findElement(By.id("id_fname")).sendKeys(fname);
+driver.findElement(By.id("id_lname")).sendKeys(lname);
+driver.findElement(By.id("id_email")).sendKeys(email);
+driver.findElement(By.id("id_phone")).sendKeys(phone);
+driver.findElement(By.id("id_submit_button")).click();
+
+String fname_conf_actual = driver.findElement(By.id("id_fname_conf")).getText();
+String lname_conf_actual = driver.findElement(By.id("id_lname_conf")).getText();
+String email_conf_actual = driver.findElement(By.id("id_email_conf")).getText();
+String phone_conf_actual = driver.findElement(By.id("id_phone_conf")).getText();
+
+driver.findElement(By.id("id_back_button")).click(); //back to main page
+
+if (fname.equals(fname_conf_actual) && lname.equals(lname_conf_actual) && email.equals(email_conf_actual) && phone.equals(phone_conf_actual)) 
+{System.out.println("Test Case ID: \t\t" + text_case_id_13_01 + " - PASSED");
+System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
+System.out.println("Last Expected/Actual: \t"  + lname + "/" + lname_conf_actual);
+System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
+System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);}
+else {System.out.println("Test Case ID: \t\t" + text_case_id_13_01 + " - FAILED");
+System.out.println("First Expected/Actual: \t" + fname + "/" + fname_conf_actual);
+System.out.println("Last Expected/Actual: \t"  + lname + "/" + lname_conf_actual);
+System.out.println("Email Expected/Actual: \t" + email + "/" + email_conf_actual);
+System.out.println("Phone Expected/Actual: \t" + phone + "/" + phone_conf_actual);}
+System.out.println("=======================================");
+
 // TC-002.14
 Thread.sleep(1000);
 driver.findElement(By.id("id_submit_button")).submit();
@@ -389,6 +414,35 @@ else {System.out.println("Test Case ID: \t\t" + text_case_id_17 + " - FAILED");
 System.out.println("terms label Expected/Actual: \t" + phone_error_expected + "/" + phone_error_actual);}			
 System.out.println("=======================================");		
 	
+// TC-001.19 drop down list validation
+
+state_select_actual = driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).getText(); //id('id_state')/x:option[6]
+
+if (state_select_expected.equals(state_select_actual)) 
+{System.out.println("Test Case ID: \t\t" + text_case_id_19 + " - PASSED");
+System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+else {System.out.println("Test Case ID: \t\t" + text_case_id_01 + " - FAILED");
+System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+System.out.println("=======================================");
+
+// TC-001.20 Confirmation page, State field validation.
+
+driver.findElement(By.id("id_fname")).sendKeys(fname);
+driver.findElement(By.id("id_lname")).sendKeys(lname);
+driver.findElement(By.id("id_email")).sendKeys(email);
+driver.findElement(By.id("id_phone")).sendKeys(phone);
+driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).click();
+driver.findElement(By.id("id_submit_button")).click();
+//Thread.sleep(5000);
+state_select_actual = driver.findElement(By.xpath("//*[@id='id_state_conf']")).getText();
+
+if (state_select_expected.equals(state_select_actual)) 
+{System.out.println("Test Case ID: \t\t" + text_case_id_20 + " - PASSED");
+System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+else {System.out.println("Test Case ID: \t\t" + text_case_id_20 + " - FAILED");
+System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+System.out.println("=======================================");
+
 		
 // TC-001.46
 
