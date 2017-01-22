@@ -138,6 +138,8 @@ String text_case_id_15 = "TC-002.15";
 String text_case_id_16 = "TC-002.16";
 String text_case_id_17 = "TC-002.17";
 
+String text_case_id_19 = "TC-001.19";
+
 String text_case_id_13_13 = "TC-001.13.13";
 
 String text_case_id_46 = "TC-001.46 facebook page";
@@ -158,13 +160,34 @@ String phone_label_expected = "Phone Number";
 String gender_label_expected = "Gender";
 String state_label_expected = "State";
 String terms_label_expected = "I agree to the Terms";
+String state_select_expected = "California";
 
 String fname_error_expected = "Please enter First Name";
 String lname_error_expected = "Please enter Last Name";
 String email_error_expected = "Please enter Email Address";
 String phone_error_expected = "Please enter Phone Number";
 		
-final long start = System.currentTimeMillis();       
+final long start = System.currentTimeMillis(); 
+
+String compilation_type="debug";
+switch (compilation_type) {
+
+case "debug":
+	// TC-001.19 drop down list validation
+
+	driver.get(url);
+	driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	String state_select_actual = driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).getText(); //id('id_state')/x:option[6]
+
+	if (state_select_expected.equals(state_select_actual)) 
+	{System.out.println("Test Case ID: \t\t" + text_case_id_19 + " - PASSED");
+	System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+	else {System.out.println("Test Case ID: \t\t" + text_case_id_01 + " - FAILED");
+	System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + state_select_actual);}
+	System.out.println("=======================================");
+       break;
+
+case "run":
 
 // TC-001.01 Application  title validation  – Sign Up
 
@@ -183,7 +206,7 @@ System.out.println("=======================================");
 
 // TC-001.03 quote validation
 
-driver.findElement(By.id("id_quotes")).getText();
+// driver.findElement(By.id("id_quotes")).getText();
 String quote = driver.findElement(By.id("id_quotes")).getText();
 
 if (quote != null && quote.length() < 103 && quote.length() > 36) 
@@ -211,7 +234,7 @@ driver.findElement(By.id("id_fname")).sendKeys(fname);
 driver.findElement(By.id("id_lname")).sendKeys(lname);
 driver.findElement(By.id("id_email")).sendKeys(email);
 driver.findElement(By.id("id_phone")).sendKeys(phone);
-driver.findElement(By.id("id_submit_button")).submit();
+driver.findElement(By.id("id_submit_button")).click();
 
 String fname_conf_actual = driver.findElement(By.id("id_fname_conf")).getText();
 String lname_conf_actual = driver.findElement(By.id("id_lname_conf")).getText();
@@ -369,7 +392,7 @@ System.out.println("=======================================");
 		
 // TC-001.46
 
-driver.findElement(By.id("id_img_facebook")).click();
+/*driver.findElement(By.id("id_img_facebook")).click();
 //driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 Thread.sleep(1000);
 ArrayList<String> allTabs = new ArrayList<String>(driver.getWindowHandles());
@@ -384,10 +407,10 @@ System.out.println("Test Case ID: \t\t" + text_case_id_46 + " - PASSED");
 System.out.println("Title Expected/Actual: \t" + title_facebook_expected + "/" + title_facebook_actual);}
 else {System.out.println("Test Case ID: \t\t" + text_case_id_46 + " - FAILED");
 System.out.println("Title Expected/Actual: \t" + title_facebook_expected + "/" + title_facebook_actual);}
-System.out.println("=======================================");
+System.out.println("=======================================");*/
 
-		
-		
+break; // switch for run compilation		
+}		
 final long finish = System.currentTimeMillis();
 long delayDN=2000;
 url = "http://alex.academy/ua";
