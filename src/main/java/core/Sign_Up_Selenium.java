@@ -415,7 +415,6 @@ System.out.println("terms label Expected/Actual: \t" + phone_error_expected + "/
 System.out.println("=======================================");		
 	
 // TC-001.19 drop down list validation
-
 state_select_actual = driver.findElement(By.xpath("//*[@id='id_state']/option[6]")).getText(); //id('id_state')/x:option[6]
 
 if (state_select_expected.equals(state_select_actual)) 
@@ -426,7 +425,6 @@ System.out.println("State Expected/Actual: \t" + state_select_expected + "/" + s
 System.out.println("=======================================");
 
 // TC-001.20 Confirmation page, State field validation.
-
 driver.findElement(By.id("id_fname")).sendKeys(fname);
 driver.findElement(By.id("id_lname")).sendKeys(lname);
 driver.findElement(By.id("id_email")).sendKeys(email);
