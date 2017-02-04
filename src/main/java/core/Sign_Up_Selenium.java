@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,12 +19,12 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
 public class Sign_Up_Selenium {
-	
 static WebDriver driver;
+
     public static void setWebDriver(String browser) throws IOException {
            Logger logger = Logger.getLogger("");
            logger.setLevel(Level.OFF);
-           String driverPath = "";
+           String driverPath = ""; // project folder with browsers drivers
            
      if ((browser == "Firefox") && (System.getProperty("os.name").toUpperCase().contains("MAC"))) 
            {driverPath = "./src/main/resources/webdrivers/mac/geckodriver.sh";}
